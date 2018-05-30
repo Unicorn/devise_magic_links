@@ -1,0 +1,14 @@
+<h2>Sign in without a password</h2>
+
+<%= form_for(resource, as: resource_name, url: magic_link_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class='field'>
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: 'email' %>
+  </div>
+
+  <div class='actions'>
+    <%= f.submit 'Send me a magic link' %>
+  </div>
+<% end %>

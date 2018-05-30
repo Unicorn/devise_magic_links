@@ -1,0 +1,7 @@
+<p>Hello <%= @resource.email %>!</p>
+
+<p>You have requested a magic link to quickly sign you in. You can do this through the link below.</p>
+
+<p><%= link_to 'Sign in with magic link', authenticate_magic_link_url(@resource, magic_link_token: @token) %></p>
+
+<p>This link expires in <%= time_ago_in_words(@resource.magic_link_expires_in.from_now) %>, so be sure to use it soon.</p>

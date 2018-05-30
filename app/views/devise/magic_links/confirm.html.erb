@@ -1,0 +1,12 @@
+<h2>An email is on its way!</h2>
+
+<%- if Devise.paranoid %>
+  If your email address exists in our database, you will receive an email with instructions on how to sign in with your magic link.
+<%- else %>
+  You will receive an email with instructions on how to sign in with your magic link.
+<% end -%><br />
+
+This link expires in <%= time_ago_in_words(resource.magic_link_expires_in.from_now) %>, so be sure to use it soon.<br />
+
+<br />
+<%= link_to "Didn't receive magic link?", new_magic_link_path(resource_name) %>

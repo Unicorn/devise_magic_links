@@ -1,0 +1,8 @@
+en:
+  devise:
+    failure:
+      invalid_magic_link: "The magic link provided is invalid!"
+      expired_magic_link: "The magic link provided has expired!"
+    magic_links:
+      send_instructions: "You will receive an email with instructions on how to sign in with your magic link."
+      send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions on how to sign in with your magic link."
