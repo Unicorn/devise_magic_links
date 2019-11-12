@@ -16,7 +16,7 @@ class Devise::MagicLinksController < DeviseController
     yield resource if block_given?
 
     if successfully_sent?(resource)
-      if resource.magic_link_confirmation_page?
+      if is_navigational_format? && resource.magic_link_confirmation_page?
         flash.delete(:notice)
         respond_with_navigational(resource) { render :confirm }
       else
