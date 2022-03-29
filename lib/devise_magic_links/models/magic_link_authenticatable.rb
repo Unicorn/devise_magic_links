@@ -69,7 +69,7 @@ module Devise
       end
 
       def set_magic_link_token(redirect_path = nil)
-        raw, enc = Devise.token_generator.generate(self.class, :magic_link_token)
+        raw, enc = Devise.token_generator.generate_code(self.class, :magic_link_token)
 
         self.magic_link_token = enc
         self.magic_link_sent_at = Time.now.utc

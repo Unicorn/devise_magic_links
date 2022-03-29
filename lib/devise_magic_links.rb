@@ -27,6 +27,23 @@ module Devise
   # Default is: true
   mattr_accessor :magic_link_confirmation_page
   @@magic_link_confirmation_page = true
+
+  def self.friendly_code(length = 6)
+    SecureRandom.random_number(10**length).to_s.rjust(length, '0')
+  end
+
+  class TokenGenerator
+    def generate_code(klass, column)
+      key = key_for(column)
+
+      loop do
+        raw = Devise.friendly_code
+        enc = OpenSSL::HMAC.hexdigest(@digest, key, raw)
+        break [raw, enc] unless klass.to_adapter.find_first({ column => enc })
+      end
+    end
+  end
+
 end
 
 Devise.add_module(
